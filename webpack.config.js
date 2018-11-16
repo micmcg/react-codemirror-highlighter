@@ -1,10 +1,17 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
     template: path.join(__dirname, 'examples/src/index.html'),
     filename: './index.html',
 });
+
+const codemirrorReplacementWebpackPlugin = new webpack.NormalModuleReplacementPlugin(
+    /(\.\.\/)+lib\/codemirror/,
+    path.join(__dirname, 'src/codemirror-shim.js')
+);
+
 module.exports = {
     entry: path.join(__dirname, 'examples/src/index.jsx'),
     output: {
@@ -24,7 +31,7 @@ module.exports = {
             },
         ],
     },
-    plugins: [htmlWebpackPlugin],
+    plugins: [htmlWebpackPlugin, codemirrorReplacementWebpackPlugin],
     resolve: {
         extensions: ['.js', '.jsx'],
     },
