@@ -286,16 +286,4 @@ CodeMirror.defineMode('null', () => ({
 
 CodeMirror.defineMIME('text/plain', 'null');
 
-// export const {
-//     defineMode,
-//     defineMIME,
-//     getMode,
-//     registerHelper,
-//     registerGlobalHelper,
-//     resolveMode,
-//     runMode,
-//     startState,
-//     findModeByExtension,
-// } = CodeMirror;
-
 module.exports = CodeMirror;
